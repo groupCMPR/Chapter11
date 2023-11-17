@@ -5,8 +5,9 @@
 #include <iostream> //For cout
 
 //HEADER FILE
-#include "input.h"   //For input validation
-#include "min_heap.h" //For option 1
+#include "input.h"                //For input validation
+#include "min_heap.h"             //For option 1
+#include "Union_Intersect_Heap.h" //For option 2
 
 using namespace std;
 
@@ -90,9 +91,9 @@ void option1()
 //Postcondition: Implements the min heap
 void minHeapVector()
 {
+    min_heap<int> minimum;
     do
     {
-        min_heap<int> minimum;
 
         system("cls");
         cout << "\n\tA> Min Heap";
@@ -127,9 +128,15 @@ void minHeapVector()
         }break;
         case 3: 
         {
-            cout << "\n\t\tEnter an integer element to push onto the heap: ";
-            minimum.push();
-            //cout << "\n\t\tERROR: the element, " << ", already existed in the heap. Please re-specify.";
+            int size = minimum.getSize();
+            int value = inputInteger("\n\t\tEnter an integer element to push onto the heap: ");
+            while (minimum.push(value) == false)
+            {
+                cout << "\t\tERROR: the element, " << value << ", already existed in the heap. Please re-specify.\n";
+                value = inputInteger("\n\t\tEnter an integer element to push onto the heap: ");
+            }
+            
+            minimum.reheapification(size);
         }break;
         case 4: 
         {
@@ -206,26 +213,77 @@ void maxHeapVector()
 //Postcondition: Implements the union and intersection of two max/min heaps
 void option2()
 {
+    Union_Intersect_Heap<int> max_heap("Max");
+    Union_Intersect_Heap<int> min_heap("Min");
+
     do
     {
         system("cls");
         cout << "\n\t2> Union and intersect heap";
         cout << "\n\t" << string(100, char(205));
-        cout << "\n\t\tA> Union two max Heaps";
-        cout << "\n\t\tB> Intersect two max Heaps";
-        cout << "\n\t\tC> Union two mmin Heaps";
-        cout << "\n\t\tD> Intersect two min Heaps";
+        cout << "\n\t\tA> Set Max Heaps";
+        cout << "\n\t\tB> Set Min Heaps";
+        cout << "\n\t\tC> Union two max Heaps";
+        cout << "\n\t\tD> Intersect two max Heaps";
+        cout << "\n\t\tE> Union two min Heaps";
+        cout << "\n\t\tF> Intersect two min Heaps";
         cout << "\n\t" << string(100, char(196));
         cout << "\n\t\t0> return";
         cout << "\n\t" << string(100, char(205));
 
-        switch (inputChar("\n\t\tOption: ", static_cast<string>("ABCD0")))
+        switch (inputChar("\n\t\tOption: ", static_cast<string>("ABCDEF0")))
         {
         case '0': return;
-        case 'A': break;
-        case 'B': break;
-        case 'C': break;
-        case 'D': break;
+        case 'A': max_heap.set_Heap(); break;
+        case 'B': min_heap.set_Heap(); break;
+        case 'C': {
+
+            if (max_heap.get_Empty()) {
+                cout << "\n\tMax Heap is empty.";
+                break;
+            }
+
+            max_heap.set_Union(true);
+
+            cout << max_heap;
+
+            break;
+        }
+        case 'D': {
+
+            if (max_heap.get_Empty()) {
+                cout << "\n\tMax Heap is empty.";
+                break;
+            }
+
+            max_heap.set_Intersect(true);
+
+            cout << max_heap;
+            break;
+        }
+        case 'E': {
+            if (min_heap.get_Empty()) {
+                cout << "\n\tMin Heap is empty.";
+                break;
+            }
+
+            min_heap.set_Union(false);
+
+            cout << min_heap;
+
+            break;
+        }
+        case 'F': {
+            if (min_heap.get_Empty()) {
+                cout << "\n\tMin Heap is empty.";
+                break;
+            }
+
+            min_heap.set_Intersect(false);
+
+            cout << min_heap;
+            break;
+        }
         default: cout << "\t\tERROR: - Invalid option. Please re-enter"; break;
         }
         cout << "\n";
