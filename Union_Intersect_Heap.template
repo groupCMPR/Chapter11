@@ -5,7 +5,7 @@ Union_Intersect_Heap<T>::Union_Intersect_Heap(const string& prompt) {
 	this->prompt = prompt;
 }
 
-//precondition:N/A
+//precondition: must be integer data type T
 //postcondition:sets up first and second heap
 template <typename T>
 void Union_Intersect_Heap<T>::set_Heap() {
