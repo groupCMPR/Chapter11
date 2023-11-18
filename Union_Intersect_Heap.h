@@ -18,8 +18,8 @@ public:
 
 	//Mutators
 	void set_Heap();
-	void set_Union(bool is_max);
-	void set_Intersect(bool is_max);
+	void set_Union(const bool& is_max);
+	void set_Intersect(const bool& is_max);
 
 	//Accessors, for data hiding into friend function
 	bool get_Empty();
