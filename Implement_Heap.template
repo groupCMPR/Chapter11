@@ -1,0 +1,74 @@
+template <typename T>
+Implement_Heap<T>::Implement_Heap() {};
+
+//precondition: Template must be of numerical type due to rng distribution
+template <typename T>
+void Implement_Heap<T>::set_Vector(const int& vector_Size){
+		random_device develop;
+		mt19937 rng(develop());
+		uniform_int_distribution<int> range(0, 100);
+
+		Heap.clear();
+		Heap.reserve(vector_Size);
+
+		for (int i = 0; i < vector_Size; ++i) {
+			Heap.push_back(range(rng));
+		}
+}
+
+//precondition: template must be numerical type
+template <typename T>
+void Implement_Heap<T>::set_push_back(const T& value) {
+	Heap.push_back(value);
+}
+
+template <typename T>
+void Implement_Heap<T>::set_heap() {
+	make_heap(Heap.begin(), Heap.end());
+}
+
+template <typename T>
+void Implement_Heap<T>::set_push_heap() {
+	push_heap(Heap.begin(), Heap.end());
+}
+
+//precondition: must be heap
+template <typename T>
+void Implement_Heap<T>::set_pop_heap() {
+	pop_heap(Heap.begin(), Heap.end());
+}
+
+//precondition: must be heap
+template <typename T>
+void Implement_Heap<T>::set_sort_heap() {
+	sort_heap(Heap.begin(), Heap.end());
+}
+
+template <typename T>
+void Implement_Heap<T>:: display_until_heap()  {
+	cout << "The heap elements in container are :";
+	for (auto it = Heap.begin(); it != is_heap_until(Heap.begin(), Heap.end()); ++it) {
+		cout << *it << " ";
+	}
+}
+
+//precondition: must be heap
+template <typename T>
+T Implement_Heap<T>::is_Front() const{
+	return Heap.front();
+}
+
+template <typename T>
+bool Implement_Heap<T>::is_Heap() const{
+return (is_heap(Heap.begin(), Heap.end()));
+}
+
+template <typename T>
+ostream& operator<< (ostream& out, const Implement_Heap<T>& obj) {
+	out << "\n\tThe elements inside the vector/heap: ";
+	for (auto iterator = obj.Heap.begin(); iterator != obj.Heap.end(); ++iterator)
+		out << *iterator << " ";
+
+	return out;
+}
+
