@@ -1,4 +1,4 @@
-//Names: Alexis Martinez, Angie Campos, John Kim, Neidy Malaga, & Vivian Huynh
+//Names: Alexis Martinez, John Kim, Neidy Malaga, & Vivian Huynh
 //Date: 11/13/2023
 //Description: Chapter 11 Assignment - Heaps
 
@@ -6,7 +6,8 @@
 
 //HEADER FILE
 #include "input.h" //For input validation
-
+#include "Union_Intersect_Heap.h" //option 2
+#include "Implement_Heap.h" //option 3
 using namespace std;
 
 //PROTOTYPES
@@ -14,6 +15,7 @@ int menuOption();
 
 //Option 1 - Heap using vector
 void option1();
+int menuOption();
 void minHeap();
 void maxHeap();
 //Option 2 - Union and intersect of heaps
@@ -62,6 +64,7 @@ int menuOption()
 //Postcondition: Returns char and implements min and max heaps
 void option1()
 {
+
     do
     {
         system("cls");
@@ -159,26 +162,77 @@ void maxHeap()
 //Postcondition: Implements the union and intersection of two max/min heaps
 void option2()
 {
+    Union_Intersect_Heap<int> max_heap("Max");
+    Union_Intersect_Heap<int> min_heap("Min");
+
     do
     {
         system("cls");
         cout << "\n\t2> Union and intersect heap";
         cout << "\n\t" << string(100, char(205));
-        cout << "\n\t\tA> Union two max Heaps";
-        cout << "\n\t\tB> Intersect two max Heaps";
-        cout << "\n\t\tC> Union two mmin Heaps";
-        cout << "\n\t\tD> Intersect two min Heaps";
+        cout << "\n\t\tA> Set Max Heaps";
+        cout << "\n\t\tB> Set Min Heaps";
+        cout << "\n\t\tC> Union two max Heaps";
+        cout << "\n\t\tD> Intersect two max Heaps";
+        cout << "\n\t\tE> Union two min Heaps";
+        cout << "\n\t\tF> Intersect two min Heaps";
         cout << "\n\t" << string(100, char(196));
         cout << "\n\t\t0> return";
         cout << "\n\t" << string(100, char(205));
 
-        switch (inputChar("\n\t\tOption: ", static_cast<string>("ABCD0")))
+        switch (inputChar("\n\t\tOption: ", static_cast<string>("ABCDEF0")))
         {
         case '0': return;
-        case 'A': break;
-        case 'B': break;
-        case 'C': break;
-        case 'D': break;
+        case 'A': max_heap.set_Heap(); break;
+        case 'B': min_heap.set_Heap(); break;
+        case 'C': {
+
+            if (max_heap.get_Empty()) {
+                cout << "\n\tMax Heap is empty.";
+                break;
+            }
+
+            max_heap.set_Union(true);
+
+            cout << max_heap;
+
+            break;
+        }
+        case 'D': {
+
+            if (max_heap.get_Empty()) {
+                cout << "\n\tMax Heap is empty.";
+                break;
+            }
+
+            max_heap.set_Intersect(true);
+
+            cout << max_heap;
+            break;
+        }
+        case 'E': {
+            if (min_heap.get_Empty()) {
+                cout << "\n\tMin Heap is empty.";
+                break;
+            }
+
+            min_heap.set_Union(false);
+
+            cout << min_heap;
+
+            break;
+        }
+        case 'F': {
+            if (min_heap.get_Empty()) {
+                cout << "\n\tMin Heap is empty.";
+                break;
+            }
+
+            min_heap.set_Intersect(false);
+
+            cout << min_heap;
+            break;
+        }
         default: cout << "\t\tERROR: - Invalid option. Please re-enter"; break;
         }
         cout << "\n";
@@ -190,6 +244,8 @@ void option2()
 //Postcondition: Implements heap with algorithm
 void option3()
 {
+    Implement_Heap<int> heap;
+
     do
     {
         system("cls");
@@ -212,16 +268,46 @@ void option3()
         switch (inputChar("\n\t\tOption: ", static_cast<string>("ABCDEFGHIJ0")))
         {
         case '0': return;
-        case 'A': break;
-        case 'B': break;
-        case 'C': break;
-        case 'D': break;
-        case 'E': break;
-        case 'F': break;
-        case 'G': break;
-        case 'H': break;
-        case 'I': break;
-        case 'J': break;
+        case 'A': heap.set_Vector(inputInteger("\n\tEnter the size of the dynamic array: ", 1 , 100)); break;
+        case 'B': heap.set_push_back(inputInteger("\n\tEnter an element: ", true)); break;
+        case 'C': heap.set_heap(); cout << "\n\tVector is now a heap"; break;
+        case 'D': 
+            if (heap.is_Heap()) {
+                cout << "\n\tThe maximum element of heap: " << heap.is_Front();
+            }
+            else
+                cout << "\n\tVector is not a heap";
+                
+            break;
+        case 'E': heap.set_push_heap(); break;
+        case 'F': 
+            if (heap.is_Heap()) {
+                heap.set_pop_heap();
+                cout << "\n\tThe heap has been popped";
+            }
+            else
+                cout << "\n\tVector is not a heap";
+            
+            break;
+        case 'G':
+            if (heap.is_Heap()) {
+                heap.set_sort_heap();
+                cout << "\n\tThe heap has been sorted";
+            }
+            else
+                cout << "\n\tVector is not a heap"; 
+
+            break;
+        case 'H':             
+            if (heap.is_Heap()) 
+              cout << "\n\tThe vector is a heap";
+            else
+                cout << "\n\tVector is not a heap"; 
+            break;
+        case 'I': 
+            heap.display_until_heap();
+            break;
+        case 'J': cout << heap; break;
         default: cout << "\t\tERROR: - Invalid option. Please re-enter"; break;
         }
         cout << "\n";
