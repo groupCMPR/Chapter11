@@ -28,6 +28,7 @@ void Union_Intersect_Heap<T>::set_Heap() {
 		--vector_Size;
 	} while (vector_Size > 0);
 
+
 	//makes a heap
 	make_heap(first_heap.begin(), first_heap.end());
 	make_heap(second_heap.begin(), second_heap.end());
@@ -35,6 +36,7 @@ void Union_Intersect_Heap<T>::set_Heap() {
 }
 
 //precondition: first and second heap must be filled, bool used to make max or min heap
+//data type must be integer
 //postcondition: merges two heaps into a max or min heap
 template <typename T>
 void Union_Intersect_Heap<T>::set_Union(bool is_max) {
@@ -49,7 +51,7 @@ void Union_Intersect_Heap<T>::set_Union(bool is_max) {
 			final_heap.push_back(*iter);
 	}
 
-	//if true max heap, if false min heap
+	//if true max heap, if false min heap (reheapify)
 	if(is_max)
 		make_heap(final_heap.begin(), final_heap.end());
 	else
@@ -57,6 +59,7 @@ void Union_Intersect_Heap<T>::set_Union(bool is_max) {
 }
 
 //precondition: first and second heap must be filled, bool used to make max or min heap
+//data type must be integer
 //postcondition: puts repeating elements in max or min heap
 template <typename T>
 void Union_Intersect_Heap<T>::set_Intersect(bool is_max) {
