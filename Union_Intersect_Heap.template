@@ -39,7 +39,7 @@ void Union_Intersect_Heap<T>::set_Heap() {
 //data type must be integer
 //postcondition: merges two heaps into a max or min heap
 template <typename T>
-void Union_Intersect_Heap<T>::set_Union(bool is_max) {
+void Union_Intersect_Heap<T>::set_Union(const bool& is_max) {
 	prompt_action = "Merged " + prompt;
 
 	//all elements are copied
@@ -62,7 +62,7 @@ void Union_Intersect_Heap<T>::set_Union(bool is_max) {
 //data type must be integer
 //postcondition: puts repeating elements in max or min heap
 template <typename T>
-void Union_Intersect_Heap<T>::set_Intersect(bool is_max) {
+void Union_Intersect_Heap<T>::set_Intersect(const bool& is_max) {
 	final_heap.clear();
 
 	prompt_action = "Intersect";
