@@ -14,14 +14,14 @@ void Union_Intersect_Heap<T>::set_Heap() {
 	second_heap.clear();
 
 	//loops fill in vectors
-	int vector_Size = inputInteger("\n\tEnter the amount of integers to input into the first " + prompt + " heap: ", true);
+	int vector_Size = inputInteger("\n\tEnter the amount of integers to input into the first " + prompt + " heap: ", 1, 100);
 	first_heap.reserve(vector_Size);
 	do {
 		first_heap.push_back(inputInteger("\n\tEnter an element: "));
 		--vector_Size;
 	} while (vector_Size > 0);
 
-	vector_Size = inputInteger("\n\tEnter the amount of integers to input into the second " + prompt + " heap: ", true);
+	vector_Size = inputInteger("\n\tEnter the amount of integers to input into the second " + prompt + " heap: ", 1, 100);
 	second_heap.reserve(vector_Size);
 	do {
 		second_heap.push_back(inputInteger("\n\tEnter an element: "));
