@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <functional> // Required for std::greater<int>
 #include "input.h"
 using namespace std;
 
