@@ -1,0 +1,89 @@
+template<class T>
+ostream& operator <<(ostream& out, const maxHeap<T>& obj)
+{
+    for (int i = 0; i < obj.myVec.size(); i++)
+        out << obj.myVec[i] << " ";
+    return out;
+}
+
+template<typename T>
+int maxHeap<T>::parent(int num) {
+    return (num - 1) / 2;
+}
+
+template<typename T>
+int maxHeap<T>::leftNode(int num){
+    return (num * 2 + 1); 
+}
+
+template<typename T>
+int maxHeap<T>::rightNode(int num){
+    return (num * 2 + 2);
+}
+
+template<typename T>
+void maxHeap<T>::heap_down(int num){
+    int left = leftNode(num);
+    int right = rightNode(num);
+
+    int largest = num;
+
+        
+    if (left < size() && myVec[left] > myVec[num])
+        largest = left;
+
+    if (right < size() && myVec[right] > myVec[largest])
+        largest = right;
+
+        
+    if (largest != num) {
+        swap(myVec[num], myVec[largest]);
+        heap_down(largest);
+    }
+}
+
+template<typename T>
+void maxHeap<T>::heap_up(int num){
+    if (num < 0 || num > myVec.size())
+            return;
+
+    if (num && myVec[parent(num)] < myVec[num])
+        {
+          swap(myVec[num], myVec[parent(num)]);
+
+          heap_up(parent(num));
+        }
+}
+
+template<typename T>
+int maxHeap<T>::size(){
+    return myVec.size();
+}
+
+template<typename T>
+bool maxHeap<T>::empty(){
+    return myVec.size() == 0;
+}
+
+template<typename T>
+void maxHeap<T>::push(T key){
+    myVec.push_back(key);
+    heap_up(size() - 1);
+}
+
+template<typename T>
+T maxHeap<T>::front(){
+    return myVec[0];
+}
+
+template<typename T>
+void maxHeap<T>::pop(){
+    if (empty())
+        return;
+
+    myVec[0] = myVec.back();
+
+    myVec.pop_back();
+
+    heap_down(0);
+}
