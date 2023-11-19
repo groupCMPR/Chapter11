@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include "input.h"
 using namespace std;
 
 template <typename T>
