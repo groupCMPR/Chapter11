@@ -83,7 +83,7 @@ void Union_Intersect_Heap<T>::set_Intersect(const bool& is_max) {
 //precondition: N/A
 //postcondition: returns true if empty, false if filled
 template <typename T>
-bool Union_Intersect_Heap<T>::get_Empty() {
+bool Union_Intersect_Heap<T>::get_Empty() const{
 	return (first_heap.empty());
 }
 
