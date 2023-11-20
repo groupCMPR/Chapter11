@@ -18,6 +18,7 @@ public:
 	Implement_Heap();
 
 	//mutator
+	bool empty();
 	void set_Vector(const int& vector_Size);
 	void set_push_back(const T& value);
 	void set_heap();
