@@ -23,11 +23,11 @@ public:
 
 	//Mutators
 	void set_Heap();
-	void set_Union(const bool is_max);
-	void set_Intersect(const bool is_max);
+	void set_Union(const bool& is_max);
+	void set_Intersect(const bool& is_max);
 
 	//Accessors, for data hiding into friend function
-	const bool get_Empty();
+	bool get_Empty() const;
 	string get_Prompt_Action() const;
 	string get_Prompt() const;
 	typename vector<T>::const_iterator get_First_Begin() const;
