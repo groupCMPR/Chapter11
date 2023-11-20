@@ -1,3 +1,7 @@
+// Name: Neidy Malaga
+// Date: 11/16/2023
+// Description: template file for template class Union_Intersect_Heap
+
 //precondition: string prompt ("Maximum" or "Minimum")
 //postcondition: constructor
 template <typename T>
