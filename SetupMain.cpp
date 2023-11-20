@@ -365,6 +365,10 @@ void option3()
         case 'B': heap.set_push_back(inputInteger("\n\tEnter an element: ", true)); break;
         case 'C': heap.set_heap(); cout << "\n\tVector is now a heap."; break;
         case 'D':
+		if (heap.empty()) {
+    		cout << "\n\tVector is empty";
+    		break;
+		}
             if (heap.is_Heap()) {
                 cout << "\n\tThe maximum element of heap: " << heap.is_Front();
             }
