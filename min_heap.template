@@ -5,7 +5,7 @@
 //Precondition : N/A
 //Postcondition: N/A
 template <class T>
-min_heap<T>::min_heap()
+minHeap<T>::minHeap()
 {}
 
 //------------------------------------------------------
@@ -16,14 +16,14 @@ min_heap<T>::min_heap()
 //Precondition : Dynamic array is not empty; Passing in the size of the array
 //Postcondition: Return half of the size of the array
 template <class T>
-T min_heap<T>::getParent(int size)
+T minHeap<T>::getParent(int size)
 {
 	return (size - 1) / 2;
 }
 //Precondition : N/A
 //Postcondition: Return the size of the array
 template <class T>
-int min_heap<T>::getSize() const
+int minHeap<T>::getSize() const
 {
 	return arra.size();
 }
@@ -31,14 +31,14 @@ int min_heap<T>::getSize() const
 //Postcondition: Return TRUE if the dynamic array is empty
 //				 Return FALSE if the dynamic array has data
 template <class T>
-bool min_heap<T>::isEmpty() const
+bool minHeap<T>::isEmpty() const
 {
 	return arra.empty();
 }
 //Precondition : Dynamic array is not empty
 //Postcondition: Return the first element of the array
 template <class T>
-T min_heap<T>::getFront() const
+T minHeap<T>::getFront() const
 {
 	return arra.front();
 }
@@ -46,8 +46,7 @@ T min_heap<T>::getFront() const
 //Postcondition: Return TRUE if no duplicate data and change the array
 //				 Return FALSE if there is duplicate data
 template <class T>
-//void min_heap<T>::push(T& data)
-bool min_heap<T>::push(const T& data)
+bool minHeap<T>::push(const T& data)
 {
 	for (int i = 0; i < arra.size(); i++)
 	{
@@ -68,7 +67,7 @@ bool min_heap<T>::push(const T& data)
 //Precondition : Passing in size of the array
 //Postcondition: Arrange array in reheapification up
 template <class T>
-void min_heap<T>::reheapification(int size)
+void minHeap<T>::reheapification(int size)
 {
 	if(size != 0 && arra[getParent(size)] > arra[size])
 	{
@@ -79,14 +78,14 @@ void min_heap<T>::reheapification(int size)
 //Precondition : Dynamic array is not empty
 //Postcondition: Removing the first element in the array
 template <class T>
-void min_heap<T>::pop()
+void minHeap<T>::pop()
 {
 	arra.erase(arra.begin());
 }
 //Precondition : Dynamic array is not empty
 //Postcondition: Display all the data inside the array
 template <class T>
-void min_heap<T>::display()
+void minHeap<T>::display()
 {
 	cout << "\n\tHeap\n\t";
 	for (int i = 0; i < arra.size(); i++)
