@@ -3,10 +3,10 @@
 // Description: Header file for template class Implement_Heap
 
 #pragma once
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <random>
+#include <iostream>  //For cout
+#include <algorithm> //For heap
+#include <vector>    //For vector
+#include <random>    //For rng distribution
 
 #include "input.h"
 template <typename T>
@@ -25,7 +25,7 @@ public:
 	void set_pop_heap();
 	void set_sort_heap();
 	void display_until_heap();
-	
+
 	//accessor
 	T is_Front() const;
 	bool is_Heap() const;
