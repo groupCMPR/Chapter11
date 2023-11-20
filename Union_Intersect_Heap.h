@@ -1,9 +1,12 @@
+// Name: Neidy Malaga
+// Date: 11/16/2023
+// Description: Header file for template class Union_Intersect_Heap
+
 #pragma
-#include <vector>
-#include <algorithm>
-#include <string>
-#include <functional> // Required for std::greater<int>
-#include "input.h"
+#include <vector>    //For vector
+#include <algorithm> //For heap
+#include <string>    //For string
+#include "input.h"   //For input validation
 using namespace std;
 
 template <typename T>
@@ -20,11 +23,11 @@ public:
 
 	//Mutators
 	void set_Heap();
-	void set_Union(const bool& is_max);
-	void set_Intersect(const bool& is_max);
+	void set_Union(bool is_max);
+	void set_Intersect(bool is_max);
 
 	//Accessors, for data hiding into friend function
-	bool get_Empty() const;
+	bool get_Empty();
 	string get_Prompt_Action() const;
 	string get_Prompt() const;
 	typename vector<T>::const_iterator get_First_Begin() const;
@@ -40,4 +43,3 @@ public:
 };
 
 #include "Union_Intersect_Heap.template"
-
