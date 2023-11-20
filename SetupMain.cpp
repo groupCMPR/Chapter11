@@ -207,7 +207,22 @@ void maxHeapVector()
             }
             else cout << "\n\t\tThe heap is not empty.";
             break;
-        case 3: heap.push(inputInteger("\n\t\tEnter an integer element to push onto the heap: ")); break;
+        case 3: {
+			do {
+				int number = inputInteger("\n\t\tEnter an integer element to push onto the heap: ");
+
+				if (!heap.find(number)) {
+					heap.push(number);
+					break;
+				}
+				else {
+					cout << "\n\t\tERROR: the element, " << number << ", already existed in the heap.Please re - specify.";
+				}
+
+			} while (true);
+			
+			break;
+		}
         case 4:
             if (heap.empty()) {
                 cout << "\n\t\tThe heap is empty.";
