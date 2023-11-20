@@ -1,3 +1,7 @@
+// Name: John Kim
+// Date: 11/18/2023
+// Description: Header file for template class Implement_Heap
+
 #pragma once
 #include <iostream>
 #include <algorithm>
