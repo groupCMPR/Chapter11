@@ -1,12 +1,9 @@
-// Name: Neidy Malaga
-// Date: 11/16/2023
-// Description: Header file for template class Union_Intersect_Heap
-
 #pragma
-#include <vector>    //For vector
-#include <algorithm> //For heap
-#include <string>    //For string
-#include "input.h"   //For input validation
+#include <vector>
+#include <algorithm>
+#include <string>
+#include <functional> // Required for std::greater<int>
+#include "input.h"
 using namespace std;
 
 template <typename T>
