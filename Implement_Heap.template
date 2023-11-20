@@ -1,3 +1,7 @@
+// Name: John Kim
+// Date: 11/18/2023
+// Description: template file for template class Implement_Heap
+
 template <typename T>
 Implement_Heap<T>::Implement_Heap() {};
 
