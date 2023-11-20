@@ -279,7 +279,10 @@ void option3()
                 cout << "\n\tVector is not a heap";
                 
             break;
-        case 'E': heap.set_push_heap(); break;
+        case 'E': heap.set_push_heap(); 
+            cout << "\n\tThe heap has a new element added.";
+            
+            break;
         case 'F': 
             if (heap.is_Heap()) {
                 heap.set_pop_heap();
