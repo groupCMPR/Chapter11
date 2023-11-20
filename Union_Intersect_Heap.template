@@ -1,7 +1,3 @@
-// Name: Neidy Malaga
-// Date: 11/16/2023
-// Description: template file for template class Union_Intersect_Heap
-
 //precondition: string prompt ("Maximum" or "Minimum")
 //postcondition: constructor
 template <typename T>
@@ -48,12 +44,16 @@ void Union_Intersect_Heap<T>::set_Union(const bool& is_max) {
 
 	//all elements are copied
 	final_heap = first_heap;
+	final_heap.insert(final_heap.end(), second_heap.begin(), second_heap.end());
+	
+	//sorts heap from greatest to least, or least to greatest
+	//so unique can take put all consecutive repeating numbers to the end to be erase
+	if(is_max)
+		sort(final_heap.begin(), final_heap.end());
+	else
+		sort(final_heap.begin(), final_heap.end(), greater<int>());
 
-	//to avoid repeating numbers from the second heap
-	for (auto iter = second_heap.begin(); iter < second_heap.end(); ++iter) {
-		if (find(first_heap.begin(), first_heap.end(), *iter) == first_heap.end())
-			final_heap.push_back(*iter);
-	}
+	final_heap.erase( unique(final_heap.begin(), final_heap.end()), final_heap.end());
 
 	//if true max heap, if false min heap (reheapify)
 	if(is_max)
@@ -76,6 +76,15 @@ void Union_Intersect_Heap<T>::set_Intersect(const bool& is_max) {
 		if (find(first_heap.begin(), first_heap.end(), *iter) != first_heap.end())
 			final_heap.push_back(*iter);
 	}
+
+	//sorts heap from greatest to least, or least to greatest
+	//so unique can take put all consecutive repeating numbers to the end to be erase
+	if(is_max)
+		sort(final_heap.begin(), final_heap.end());
+	else
+		sort(final_heap.begin(), final_heap.end(), greater<int>());
+
+	final_heap.erase( unique(final_heap.begin(), final_heap.end()), final_heap.end());
 
 	//true max heap, false min heap
 	if (is_max)
