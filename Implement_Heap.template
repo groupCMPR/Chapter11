@@ -6,6 +6,7 @@ template <typename T>
 Implement_Heap<T>::Implement_Heap() {};
 
 //precondition: Template must be of numerical type due to rng distribution
+//postcondition: Outputs vector filled with rng variables in the vector.
 template <typename T>
 void Implement_Heap<T>::set_Vector(const int& vector_Size){
 		random_device develop;
@@ -21,33 +22,42 @@ void Implement_Heap<T>::set_Vector(const int& vector_Size){
 }
 
 //precondition: template must be numerical type
+//postcondition: An element is added to the heap
 template <typename T>
 void Implement_Heap<T>::set_push_back(const T& value) {
 	Heap.push_back(value);
 }
 
+//precondition: template must be numerical type
+//postcondition: Changes the array to satify the heap element.
 template <typename T>
 void Implement_Heap<T>::set_heap() {
 	make_heap(Heap.begin(), Heap.end());
 }
 
+//precondition: template must be numerical type
+//postcondition: Adds an element to the heap
 template <typename T>
 void Implement_Heap<T>::set_push_heap() {
 	push_heap(Heap.begin(), Heap.end());
 }
 
 //precondition: must be heap
+//postcondition: Removes an element from the heap
 template <typename T>
 void Implement_Heap<T>::set_pop_heap() {
 	pop_heap(Heap.begin(), Heap.end());
 }
 
 //precondition: must be heap
+//postcondition: sorts the elements in the entire heap to satify the heap.
 template <typename T>
 void Implement_Heap<T>::set_sort_heap() {
 	sort_heap(Heap.begin(), Heap.end());
 }
 
+//precondition: array must be in heap format
+//postcondition: None; does not alter the elements in the heap. Only reads them.
 template <typename T>
 void Implement_Heap<T>:: display_until_heap()  {
 	cout << "The heap elements in container are :";
@@ -57,16 +67,21 @@ void Implement_Heap<T>:: display_until_heap()  {
 }
 
 //precondition: must be heap
+//postcondition: None; only checks the top of the heap
 template <typename T>
 T Implement_Heap<T>::is_Front() const{
 	return Heap.front();
 }
 
+//precondition: template must be numerical type
+//postcondition: Returns a boolean
 template <typename T>
 bool Implement_Heap<T>::is_Heap() const{
 return (is_heap(Heap.begin(), Heap.end()));
 }
 
+//precondition: template must be numerical type
+//postcondition: None; The elements are only read; not altered.
 template <typename T>
 ostream& operator<< (ostream& out, const Implement_Heap<T>& obj) {
 	out << "\n\tThe elements inside the vector/heap: ";
@@ -75,4 +90,3 @@ ostream& operator<< (ostream& out, const Implement_Heap<T>& obj) {
 
 	return out;
 }
-
