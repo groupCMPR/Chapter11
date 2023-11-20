@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <algorithm>
 #include <vector>
 using namespace std;
 
@@ -8,14 +9,7 @@ class maxHeap
 {
 private:
     vector<T> myVec;
-    //helper functions
-    int parent(int);
-    int leftNode(int);
-    int rightNode(int);
-    void heap_down(int);
-    void heap_up(int);
-   
-
+ 
 public:
     //gets size
     int size();
@@ -32,18 +26,3 @@ public:
 };
 
 #include "maxHeap.template"
-
-template<typename T>
-int maxHeap<T>::parent(int);
-
-template<typename T>
-int maxHeap<T>::leftNode(int);
-
-template<typename T>
-int maxHeap<T>::rightNode(int);
-
-template<typename T>
-void maxHeap<T>::heap_down(int);
-
-template<typename T>
-void maxHeap<T>::heap_up(int);
