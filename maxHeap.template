@@ -28,7 +28,7 @@ void maxHeap<T>::pop(){
 template<class T>
 ostream& operator <<(ostream& out, const maxHeap<T>& obj)
 {
-    for (int i = 0; i < obj.myVec.size(); i++)
-        out << obj.myVec[i] << " ";
-    return out;
+    for (const auto& value : obj.myVec)
+            out << value << " ";
+        return out;
 }
