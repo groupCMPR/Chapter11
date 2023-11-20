@@ -60,7 +60,7 @@ void Implement_Heap<T>::set_sort_heap() {
 //postcondition: None; does not alter the elements in the heap. Only reads them.
 template <typename T>
 void Implement_Heap<T>:: display_until_heap()  {
-	cout << "The heap elements in container are :";
+	cout << "The heap elements in container are : ";
 	for (auto it = Heap.begin(); it != is_heap_until(Heap.begin(), Heap.end()); ++it) {
 		cout << *it << " ";
 	}
