@@ -21,6 +21,11 @@ void Implement_Heap<T>::set_Vector(const int& vector_Size){
 		}
 }
 
+template<typename T>
+bool Implement_Heap<T>::empty(){
+	return Heap.size() == 0;
+}
+
 //precondition: template must be numerical type
 //postcondition: An element is added to the heap
 template <typename T>
