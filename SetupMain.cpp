@@ -5,9 +5,12 @@
 #include <iostream> //For cout
 
 //HEADER FILE
-#include "input.h" //For input validation
-#include "Union_Intersect_Heap.h" //option 2
-#include "Implement_Heap.h" //option 3
+#include "input.h"                //For input validation
+#include "minHeap.h"              //For option 1 (min)
+#include "maxHeap.h"              //For option 1 (max)
+#include "Union_Intersect_Heap.h" //For option 2
+#include "Implement_Heap.h"       //For option 3
+
 using namespace std;
 
 //PROTOTYPES
@@ -15,9 +18,8 @@ int menuOption();
 
 //Option 1 - Heap using vector
 void option1();
-int menuOption();
-void minHeap();
-void maxHeap();
+void minHeapVector();
+void maxHeapVector();
 //Option 2 - Union and intersect of heaps
 void option2();
 //Option 3 - Heap in C++ STL
@@ -64,7 +66,6 @@ int menuOption()
 //Postcondition: Returns char and implements min and max heaps
 void option1()
 {
-
     do
     {
         system("cls");
@@ -79,8 +80,8 @@ void option1()
         switch (inputChar("\n\t\tOption: ", static_cast<string>("AB0")))
         {
         case '0': return;
-        case 'A': minHeap(); break;
-        case 'B': maxHeap(); break;
+        case 'A': minHeapVector(); break;
+        case 'B': maxHeapVector(); break;
         default: cout << "\t\tERROR: - Invalid option. Please re-enter"; break;
         }
         cout << "\n";
@@ -90,10 +91,13 @@ void option1()
 
 //Precondition : Calls from option 1
 //Postcondition: Implements the min heap
-void minHeap()
+void minHeapVector()
 {
+    minHeap<int> minimum;
+
     do
     {
+
         system("cls");
         cout << "\n\tA> Min Heap";
         cout << "\n\t" << string(100, char(205));
@@ -110,12 +114,62 @@ void minHeap()
         switch (inputInteger("\n\t\tOption: ", 0, 6))
         {
         case 0: return;
-        case 1: break;
-        case 2: break;
-        case 3: break;
-        case 4: break;
-        case 5: break;
-        case 6: break;
+        case 1: 
+        {
+            cout << "\n\t\tSize of the heap: " << minimum.getSize() << '\n';
+        }break;
+        case 2: 
+        {
+            if (minimum.isEmpty() == true)
+            {
+                cout << "\n\t\tThe heap is empty.\n";
+            }
+            else
+            {
+                cout << "\n\t\tThe heap is not empty.\n";
+            }
+        }break;
+        case 3: 
+        {
+            int size = minimum.getSize();
+            int value = inputInteger("\n\t\tEnter an integer element to push onto the heap: ");
+            while (minimum.push(value) == false)
+            {
+                cout << "\t\tERROR: the element, " << value << ", already existed in the heap. Please re-specify.\n";
+                value = inputInteger("\n\t\tEnter an integer element to push onto the heap: ");
+            }
+            
+            minimum.reheapification();
+        }break;
+        case 4: 
+        {
+            if (minimum.isEmpty() == true)
+            {
+                cout << "\n\t\tThe heap is empty.\n";
+                break;
+            }
+
+            cout << "\n\t\tThe first element of the heap: " << minimum.getFront();
+        }break;
+        case 5: 
+        {
+            if (minimum.isEmpty() == true)
+            {
+                cout << "\n\t\tThe heap is empty.\n";
+                break;
+            }
+            minimum.pop();
+            cout << "\n\t\tThe first element of the heap has been removed.";
+        }break;
+        case 6: 
+        {
+            if (minimum.isEmpty() == true)
+            {
+                cout << "\n\t\tThe heap is empty.\n";
+                break;
+            }
+            minimum.display();
+        }break;
         default: cout << "\t\tERROR: - Invalid option. Please re-enter"; break;
         }
         cout << "\n";
@@ -125,9 +179,11 @@ void minHeap()
 
 //Precondition : Calls from option 1
 //Postcondition: Implements max heap
-void maxHeap()
+void maxHeapVector()
 {
-    do
+    maxHeap<int> heap;
+
+    do 
     {
         system("cls");
         cout << "\n\tB> Max Heap";
@@ -139,21 +195,43 @@ void maxHeap()
         cout << "\n\t\t5. pop";
         cout << "\n\t\t6. display";
         cout << "\n\t" << string(100, char(196));
-        cout << "\n\t\t0. return";
+        cout << "\n\t\t0> return";
         cout << "\n\t" << string(100, char(205));
 
-        switch (inputInteger("\n\t\tOption: ", 0, 6))
-        {
+        switch (inputInteger("\n\t\tOption: ", 0, 6)) {
         case 0: return;
-        case 1: break;
-        case 2: break;
-        case 3: break;
-        case 4: break;
-        case 5: break;
-        case 6: break;
-        default: cout << "\t\tERROR: - Invalid option. Please re-enter"; break;
+        case 1: cout << "\n\t\tSize of the heap: " << heap.size(); break;
+        case 2:
+            if (heap.empty()) {
+                cout << "\n\t\tThe heap is empty.";
+            }
+            else cout << "\n\t\tThe heap is not empty.";
+            break;
+        case 3: heap.push(inputInteger("\n\t\tEnter an integer element to push onto the heap: ")); break;
+        case 4:
+            if (heap.empty()) {
+                cout << "\n\t\tThe heap is empty.";
+                break;
+            }
+            cout << "\n\t\tThe first element of the heap: " << heap.front();
+            break;
+        case 5:
+            if (heap.empty()) {
+                cout << "\n\t\tThe heap is empty.";
+                break;
+            }
+            cout << "\n\t\tThe first element of the heap has been removed."; heap.pop();
+            break;
+        case 6:
+            if (heap.empty()) {
+                cout << "\n\t\tThe heap is empty.";
+                break;
+            }
+            cout << "\n\t\t" << heap;
+            break;
+        default: cout << "\n\tERROR - INVALID OPTION"; break;
         }
-        cout << "\n";
+        cout << "\n\n\t";
         system("pause");
     } while (true);
 }
@@ -268,50 +346,50 @@ void option3()
         switch (inputChar("\n\t\tOption: ", static_cast<string>("ABCDEFGHIJ0")))
         {
         case '0': return;
-        case 'A': heap.set_Vector(inputInteger("\n\tEnter the size of the dynamic array: ", 1 , 100)); break;
+        case 'A': heap.set_Vector(inputInteger("\n\tEnter the size of the dynamic array: ", 1, 100)); break;
         case 'B': heap.set_push_back(inputInteger("\n\tEnter an element: ", true)); break;
-        case 'C': heap.set_heap(); cout << "\n\tVector is now a heap"; break;
-        case 'D': 
+        case 'C': heap.set_heap(); cout << "\n\tVector is now a heap."; break;
+        case 'D':
             if (heap.is_Heap()) {
                 cout << "\n\tThe maximum element of heap: " << heap.is_Front();
             }
             else
-                cout << "\n\tVector is not a heap";
-                
+                cout << "\n\tVector is not a heap.";
+
             break;
-        case 'E': heap.set_push_heap(); 
+        case 'E': heap.set_push_heap();
             cout << "\n\tThe heap has a new element added.";
-            
+
             break;
-        case 'F': 
+        case 'F':
             if (heap.is_Heap()) {
                 heap.set_pop_heap();
-                cout << "\n\tThe heap has been popped";
+                cout << "\n\tThe heap has been popped.";
             }
             else
-                cout << "\n\tVector is not a heap";
-            
+                cout << "\n\tVector is not a heap.";
+
             break;
         case 'G':
             if (heap.is_Heap()) {
                 heap.set_sort_heap();
-                cout << "\n\tThe heap has been sorted";
+                cout << "\n\tThe heap has been sorted.";
             }
             else
-                cout << "\n\tVector is not a heap"; 
+                cout << "\n\tVector is not a heap.";
 
             break;
-        case 'H':             
-            if (heap.is_Heap()) 
-              cout << "\n\tThe vector is a heap";
+        case 'H':
+            if (heap.is_Heap())
+                cout << "\n\tThe vector is a heap.";
             else
-                cout << "\n\tVector is not a heap"; 
+                cout << "\n\tVector is not a heap.";
             break;
-        case 'I': 
+        case 'I':
             heap.display_until_heap();
             break;
         case 'J': cout << heap; break;
-        default: cout << "\t\tERROR: - Invalid option. Please re-enter"; break;
+        default: cout << "\t\tERROR: - Invalid option. Please re-enter."; break;
         }
         cout << "\n";
         system("pause");
