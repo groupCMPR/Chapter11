@@ -13,8 +13,7 @@ template <class T>
 class minHeap
 {
 private:
-	vector<T> arra;
-	T getParent(int);
+	vector<T> myVector;
 
 public:
 	//CONSTRUCTOR
@@ -28,7 +27,7 @@ public:
 
 	//MUTATORS
 	void pop();
-	void reheapification(int);
+	void reheapification();
 	void display();
 };
 
