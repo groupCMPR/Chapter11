@@ -15,6 +15,8 @@ public:
     int size();
     //returns true/false
     bool empty();
+    //finds the value returns true/false
+    bool find(T);
     //pushes a valid data type
     void push(T);
     //returns front
