@@ -1,6 +1,6 @@
 // Name: Vivian Huynh
 // Date: 11/13/2023
-// Description: cpp file for template class minHeap
+// Description: template file for template class minHeap
 
 //Precondition : N/A
 //Postcondition: N/A
@@ -13,19 +13,12 @@ minHeap<T>::minHeap()
 //                     ACCESSORS 
 // 
 //------------------------------------------------------
-//Precondition : Dynamic array is not empty; Passing in the size of the array
-//Postcondition: Return half of the size of the array
-template <class T>
-T minHeap<T>::getParent(int size)
-{
-	return (size - 1) / 2;
-}
 //Precondition : N/A
-//Postcondition: Return the size of the array
+//Postcondition: Return the size of the vector
 template <class T>
 int minHeap<T>::getSize() const
 {
-	return arra.size();
+	return myVector.size();
 }
 //Precondition : N/A
 //Postcondition: Return TRUE if the dynamic array is empty
@@ -33,29 +26,29 @@ int minHeap<T>::getSize() const
 template <class T>
 bool minHeap<T>::isEmpty() const
 {
-	return arra.empty();
+	return myVector.empty();
 }
 //Precondition : Dynamic array is not empty
-//Postcondition: Return the first element of the array
+//Postcondition: Return the first element of the vector
 template <class T>
 T minHeap<T>::getFront() const
 {
-	return arra.front();
+	return myVector.front();
 }
 //Precondition : Passing in a valid template data
-//Postcondition: Return TRUE if no duplicate data and change the array
+//Postcondition: Return TRUE if no duplicate data and change the vector
 //				 Return FALSE if there is duplicate data
 template <class T>
 bool minHeap<T>::push(const T& data)
 {
-	for (int i = 0; i < arra.size(); i++)
+	for (int i = 0; i < myVector.size(); i++)
 	{
-		if (arra[i] == data)
+		if (myVector[i] == data)
 		{
 			return false;
 		}
 	}
-	arra.push_back(data);
+	myVector.push_back(data);
 	return true;
 }
 
@@ -64,37 +57,29 @@ bool minHeap<T>::push(const T& data)
 //                     MUTATORS 
 // 
 //------------------------------------------------------
-//Precondition : Passing in size of the array
-//Postcondition: Arrange array in reheapification up
+//Precondition : Passing in size of the vector
+//Postcondition: Arrange vector in reheapification up
 template <class T>
 void minHeap<T>::reheapification(int size)
 {
-	if(size != 0 && arra[getParent(size)] > arra[size])
-	{
-		swap(arra[size], arra[getParent(size)]);																							
-		reheapification(getParent(size));
-	}
+	make_heap(myVector.begin(), myVector.end(), greater<int>());
 }
 //Precondition : Dynamic array is not empty
-//Postcondition: Removing the first element in the array
+//Postcondition: Removing the first element in the vector
 template <class T>
 void minHeap<T>::pop()
 {
-	arra.erase(arra.begin());
+	myVector.erase(myVector.begin());
 }
 //Precondition : Dynamic array is not empty
-//Postcondition: Display all the data inside the array
+//Postcondition: Display all the data inside the vector
 template <class T>
 void minHeap<T>::display()
 {
 	cout << "\n\tHeap\n\t";
-	for (int i = 0; i < arra.size(); i++)
+	for (int i = 0; i < myVector.size(); i++)
 	{
-		cout << arra[i] << " ";
-		//if (arra.size() > 1 && arra.size())
-		//{
-
-		//}
+		cout << myVector[i] << " ";
 	}
 	cout << '\n';
 }
