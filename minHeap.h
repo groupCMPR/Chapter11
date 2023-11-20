@@ -11,7 +11,7 @@
 using namespace std;
 
 template <class T>
-class min_heap
+class minHeap
 {
 private:
 	vector<T> arra;
@@ -19,7 +19,7 @@ private:
 
 public:
 	//CONSTRUCTOR
-	min_heap(); //default
+	minHeap(); //default
 
 	//ACCESSORS
 	int getSize() const;
@@ -33,5 +33,5 @@ public:
 	void display();
 };
 
-#include "min_heap.template"
+#include "minHeap.template"
 #endif
