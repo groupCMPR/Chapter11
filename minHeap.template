@@ -57,10 +57,10 @@ bool minHeap<T>::push(const T& data)
 //                     MUTATORS 
 // 
 //------------------------------------------------------
-//Precondition : Passing in size of the vector
+//Precondition : Dynamic array is not emptu
 //Postcondition: Arrange vector in reheapification up
 template <class T>
-void minHeap<T>::reheapification(int size)
+void minHeap<T>::reheapification()
 {
 	make_heap(myVector.begin(), myVector.end(), greater<int>());
 }
@@ -76,7 +76,7 @@ void minHeap<T>::pop()
 template <class T>
 void minHeap<T>::display()
 {
-	cout << "\n\tHeap\n\t";
+	cout << "\n\t\tHeap\n\t\t";
 	for (int i = 0; i < myVector.size(); i++)
 	{
 		cout << myVector[i] << " ";
