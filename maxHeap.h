@@ -1,7 +1,11 @@
+// Name: Alexis Martinez
+// Date: 11/19/2023
+// Description: Header file for template class maxHeap
+
 #pragma once
-#include <iostream>
-#include <algorithm>
-#include <vector>
+#include <iostream>  //For cout
+#include <algorithm> //For make_heap
+#include <vector>    //For vector
 using namespace std;
 
 template<class T>
@@ -9,7 +13,7 @@ class maxHeap
 {
 private:
     vector<T> myVec;
- 
+
 public:
     //gets size
     int size();
