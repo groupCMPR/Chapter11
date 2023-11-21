@@ -75,7 +75,7 @@ void minHeap<T>::display() const
 template <class T>
 void minHeap<T>::reheapification()
 {
-	make_heap(myVector.begin(), myVector.end(), greater<int>());
+	make_heap(myVector.begin(), myVector.end(), greater<T>());
 }
 //Precondition : Dynamic array is not empty
 //Postcondition: Removing the first element in the vector
