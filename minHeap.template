@@ -52,19 +52,6 @@ bool minHeap<T>::push(const T& data)
 	return true;
 }
 
-//Precondition : Dynamic array is not empty
-//Postcondition: Display all the data inside the vector
-template <class T>
-void minHeap<T>::display() const
-{
-	cout << "\n\t\tHeap\n\t\t";
-	for (int i = 0; i < myVector.size(); i++)
-	{
-		cout << myVector[i] << " ";
-	}
-	cout << endl;
-}
-
 //------------------------------------------------------
 // 
 //                     MUTATORS 
@@ -83,4 +70,16 @@ template <class T>
 void minHeap<T>::pop()
 {
 	myVector.erase(myVector.begin());
+}
+//Precondition : Dynamic array is not empty
+//Postcondition: Display all the data inside the vector
+template <class T>
+void minHeap<T>::display() const
+{
+	cout << "\n\t\tHeap\n\t\t";
+	for (int i = 0; i < myVector.size(); i++)
+	{
+		cout << myVector[i] << " ";
+	}
+	cout << endl;
 }
