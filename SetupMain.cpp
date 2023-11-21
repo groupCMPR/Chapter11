@@ -1,9 +1,24 @@
 //Names: Alexis Martinez, John Kim, Neidy Malaga, & Vivian Huynh
 //Date: 11/13/2023
+// Professor Quach
 //Description: Chapter 11 Assignment - Heaps
+//The purpose of this assignment is to understand and utilize heaps. We also
+//employ the use of STL algorithm and vector to create the heaps.
+//In section one, we created a max heap and a min heap. We displayed the heaps contents,
+//size, popped elements, showed if it was empty, and pushed elements. In section two, we created 
+//two max and two min heaps. These heaps would be merged and displayed or intersected and displayed.
+//In section three, we focused more on the STL algorithms. We set the vector, pushed into a vector, made a heap,
+//pushed into a heap, displayed until the end of the heap, checked if it was a heap, and displayed.
+ 
+//Groups:
+// Section 1 (Min heap): Vivian
+//           (Max heap): Alexis
+// Section 2 (Unionize and Intersect Heaps): Neidy
+// Section 3 (Implementing Heap): John
+// main.cpp organization: Vivian  
+
 
 #include <iostream> //For cout
-
 //HEADER FILE
 #include "input.h"                //For input validation
 #include "minHeap.h"              //For option 1 (min)
@@ -114,11 +129,11 @@ void minHeapVector()
         switch (inputInteger("\n\t\tOption: ", 0, 6))
         {
         case 0: return;
-        case 1: 
+        case 1:
         {
             cout << "\n\t\tSize of the heap: " << minimum.getSize() << '\n';
         }break;
-        case 2: 
+        case 2:
         {
             if (minimum.isEmpty() == true)
             {
@@ -129,7 +144,7 @@ void minHeapVector()
                 cout << "\n\t\tThe heap is not empty.\n";
             }
         }break;
-        case 3: 
+        case 3:
         {
             int size = minimum.getSize();
             int value = inputInteger("\n\t\tEnter an integer element to push onto the heap: ");
@@ -138,10 +153,10 @@ void minHeapVector()
                 cout << "\t\tERROR: the element, " << value << ", already existed in the heap. Please re-specify.\n";
                 value = inputInteger("\n\t\tEnter an integer element to push onto the heap: ");
             }
-            
+
             minimum.reheapification();
         }break;
-        case 4: 
+        case 4:
         {
             if (minimum.isEmpty() == true)
             {
@@ -151,7 +166,7 @@ void minHeapVector()
 
             cout << "\n\t\tThe first element of the heap: " << minimum.getFront();
         }break;
-        case 5: 
+        case 5:
         {
             if (minimum.isEmpty() == true)
             {
@@ -161,7 +176,7 @@ void minHeapVector()
             minimum.pop();
             cout << "\n\t\tThe first element of the heap has been removed.";
         }break;
-        case 6: 
+        case 6:
         {
             if (minimum.isEmpty() == true)
             {
@@ -183,7 +198,7 @@ void maxHeapVector()
 {
     maxHeap<int> heap;
 
-    do 
+    do
     {
         system("cls");
         cout << "\n\tB> Max Heap";
@@ -208,21 +223,21 @@ void maxHeapVector()
             else cout << "\n\t\tThe heap is not empty.";
             break;
         case 3: {
-			do {
-				int number = inputInteger("\n\t\tEnter an integer element to push onto the heap: ");
+            do {
+                int number = inputInteger("\n\t\tEnter an integer element to push onto the heap: ");
 
-				if (!heap.find(number)) {
-					heap.push(number);
-					break;
-				}
-				else {
-					cout << "\n\t\tERROR: the element, " << number << ", already existed in the heap.Please re - specify.";
-				}
+                if (!heap.find(number)) {
+                    heap.push(number);
+                    break;
+                }
+                else {
+                    cout << "\n\t\tERROR: the element, " << number << ", already existed in the heap.Please re - specify.";
+                }
 
-			} while (true);
-			
-			break;
-		}
+            } while (true);
+
+            break;
+        }
         case 4:
             if (heap.empty()) {
                 cout << "\n\t\tThe heap is empty.";
@@ -365,15 +380,11 @@ void option3()
         case 'B': heap.set_push_back(inputInteger("\n\tEnter an element: ", true)); break;
         case 'C': heap.set_heap(); cout << "\n\tVector is now a heap."; break;
         case 'D':
-		if (heap.empty()) {
-    		cout << "\n\tVector is empty";
-    		break;
-		}
-            if (heap.is_Heap()) {
+            if (!heap.is_Empty()) {
                 cout << "\n\tThe maximum element of heap: " << heap.is_Front();
             }
             else
-                cout << "\n\tVector is not a heap.";
+                cout << "\n\tVector is empty.";
 
             break;
         case 'E': heap.set_push_heap();
