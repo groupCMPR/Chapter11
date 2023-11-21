@@ -21,11 +21,6 @@ void Implement_Heap<T>::set_Vector(const int& vector_Size){
 		}
 }
 
-template<typename T>
-bool Implement_Heap<T>::empty(){
-	return Heap.size() == 0;
-}
-
 //precondition: template must be numerical type
 //postcondition: An element is added to the heap
 template <typename T>
@@ -64,28 +59,35 @@ void Implement_Heap<T>::set_sort_heap() {
 //precondition: array must be in heap format
 //postcondition: None; does not alter the elements in the heap. Only reads them.
 template <typename T>
-void Implement_Heap<T>:: display_until_heap()  {
-	cout << "The heap elements in container are : ";
+void Implement_Heap<T>:: display_until_heap()  const{
+	cout << "\n\tThe heap elements in container are : ";
 	for (auto it = Heap.begin(); it != is_heap_until(Heap.begin(), Heap.end()); ++it) {
 		cout << *it << " ";
 	}
 }
 
-//precondition: must be heap
+//precondition: must not be empty
 //postcondition: None; only checks the top of the heap
 template <typename T>
 T Implement_Heap<T>::is_Front() const{
 	return Heap.front();
 }
 
-//precondition: template must be numerical type
+//precondition: N/A
 //postcondition: Returns a boolean
 template <typename T>
 bool Implement_Heap<T>::is_Heap() const{
 return (is_heap(Heap.begin(), Heap.end()));
 }
 
-//precondition: template must be numerical type
+//precondition: N/A
+//postcondition: Returns a boolean
+template <typename T>
+bool Implement_Heap<T>::is_Empty() const{
+return Heap.empty();
+}
+
+//precondition: N/A
 //postcondition: None; The elements are only read; not altered.
 template <typename T>
 ostream& operator<< (ostream& out, const Implement_Heap<T>& obj) {
