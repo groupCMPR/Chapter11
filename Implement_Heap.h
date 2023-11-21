@@ -18,18 +18,19 @@ public:
 	Implement_Heap();
 
 	//mutator
-	bool empty();
 	void set_Vector(const int& vector_Size);
 	void set_push_back(const T& value);
 	void set_heap();
 	void set_push_heap();
 	void set_pop_heap();
 	void set_sort_heap();
-	void display_until_heap();
 
 	//accessor
 	T is_Front() const;
 	bool is_Heap() const;
+	bool is_Empty() const;
+	void display_until_heap() const;
+
 
 	template <typename T>
 	friend ostream& operator<< (ostream& out, const Implement_Heap<T>& obj);
