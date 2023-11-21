@@ -24,11 +24,11 @@ public:
 	bool isEmpty() const;
 	T getFront() const;
 	bool push(const T&);
-	void display() const;
 
 	//MUTATORS
 	void pop();
 	void reheapification();
+	void display() const;
 };
 
 #include "minHeap.template"
