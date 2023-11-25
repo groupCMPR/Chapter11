@@ -15,6 +15,7 @@ private:
     vector<T> myVec;
 
 public:
+    maxHeap();
     //gets size
     int size() const;
     //returns true/false
