@@ -50,7 +50,7 @@ void Union_Intersect_Heap<T>::set_Union(const bool& is_max) {
 	final_heap = first_heap;
 	final_heap.insert(final_heap.end(), second_heap.begin(), second_heap.end());
 	
-	//sorts heap from greatest to least, or least to greatest
+	//sorts heap from least to greatest
 	//so unique can take put all consecutive repeating numbers to the end to be erase
 	sort(final_heap.begin(), final_heap.end());
 
@@ -78,12 +78,9 @@ void Union_Intersect_Heap<T>::set_Intersect(const bool& is_max) {
 			final_heap.push_back(*iter);
 	}
 
-	//sorts heap from greatest to least, or least to greatest
+	//sorts heap from least to greatest
 	//so unique can take put all consecutive repeating numbers to the end to be erase
-	if(is_max)
-		sort(final_heap.begin(), final_heap.end());
-	else
-		sort(final_heap.begin(), final_heap.end(), greater<int>());
+	sort(final_heap.begin(), final_heap.end());
 
 	final_heap.erase( unique(final_heap.begin(), final_heap.end()), final_heap.end());
 
