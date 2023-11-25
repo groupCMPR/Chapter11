@@ -2,8 +2,9 @@
 // Date: 11/19/2023
 // Description: template file for template class maxHeap
 
+//default
 template<typename T>
-int maxHeap<T>::maxHeap() {};
+maxHeap<T>::maxHeap() {};
 
 //PreCondition: None
 //PostConditon: Returns the size of the heap
