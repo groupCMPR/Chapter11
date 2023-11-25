@@ -20,11 +20,11 @@ public:
     //returns true/false
     bool empty() const;
     //finds the value returns true/false
-    bool find(T);
+    bool find(T) const;
     //pushes a valid data type
     void push(T);
     //returns front
-    T front();
+    T front() const;
     //pops the front
     void pop();
     //output
