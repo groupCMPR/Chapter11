@@ -16,9 +16,9 @@ private:
 
 public:
     //gets size
-    int size();
+    int size() const;
     //returns true/false
-    bool empty();
+    bool empty() const;
     //finds the value returns true/false
     bool find(T);
     //pushes a valid data type
