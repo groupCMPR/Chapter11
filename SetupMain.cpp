@@ -9,7 +9,7 @@
 //two max and two min heaps. These heaps would be merged and displayed or intersected and displayed.
 //In section three, we focused more on the STL algorithms. We set the vector, pushed into a vector, made a heap,
 //pushed into a heap, displayed until the end of the heap, checked if it was a heap, and displayed.
- 
+
 //Groups:
 // Section 1 (Min heap): Vivian
 //           (Max heap): Alexis
@@ -17,9 +17,8 @@
 // Section 3 (Implementing Heap): John
 // main.cpp organization: Vivian  
 
-
 #include <iostream> //For cout
-//HEADER FILE
+//HEADER FILES
 #include "input.h"                //For input validation
 #include "minHeap.h"              //For option 1 (min)
 #include "maxHeap.h"              //For option 1 (max)
@@ -30,7 +29,6 @@ using namespace std;
 
 //PROTOTYPES
 int menuOption();
-
 //Option 1 - Heap using vector
 void option1();
 void minHeapVector();
@@ -174,7 +172,7 @@ void minHeapVector()
                 break;
             }
             minimum.pop();
-            cout << "\n\t\tThe first element of the heap has been removed.";
+            cout << "\n\t\tThe first element of the heap has been removed.\n";
         }break;
         case 6:
         {
@@ -183,7 +181,8 @@ void minHeapVector()
                 cout << "\n\t\tThe heap is empty.\n";
                 break;
             }
-            minimum.display();
+            cout << "\n\t\tHeap";
+            cout << "\n\t\t" << minimum;
         }break;
         default: cout << "\t\tERROR: - Invalid option. Please re-enter"; break;
         }
