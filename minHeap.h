@@ -28,7 +28,9 @@ public:
 	//MUTATORS
 	void reheapification();
 	void pop();
-	void display() const;
+
+	//FRIEND
+	friend ostream& operator <<<>(ostream&, const minHeap<T>&);
 };
 
 #include "minHeap.template"
