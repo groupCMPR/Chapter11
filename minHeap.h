@@ -26,8 +26,8 @@ public:
 	bool push(const T&);
 
 	//MUTATORS
-	void pop();
 	void reheapification();
+	void pop();
 	void display() const;
 };
 
