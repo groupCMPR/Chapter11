@@ -69,17 +69,17 @@ void minHeap<T>::reheapification()
 template <class T>
 void minHeap<T>::pop()
 {
-	myVector.erase(myVector.begin());
+	pop_heap(myVector.begin(), myVector.end(), greater<T>());
+	myVector.pop_back();
 }
 //Precondition : Dynamic array is not empty
 //Postcondition: Display all the data inside the vector
-template <class T>
-void minHeap<T>::display() const
+template<class T>
+ostream& operator <<(ostream& out, const minHeap<T>& obj)
 {
-	cout << "\n\t\tHeap\n\t\t";
-	for (int i = 0; i < myVector.size(); i++)
+    for (const auto& value : obj.myVector)
 	{
-		cout << myVector[i] << " ";
+		out << value << " ";
 	}
-	cout << endl;
+    return out;
 }
