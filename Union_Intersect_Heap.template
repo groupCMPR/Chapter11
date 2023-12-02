@@ -46,6 +46,7 @@ void Union_Intersect_Heap<T>::set_Union(const bool& is_max) {
 	prompt_action = "Merged " + prompt;
 
 	//all elements are copied
+	final_heap.reserve(first_heap.size() + second_heap.size());
 	final_heap = first_heap;
 	final_heap.insert(final_heap.end(), second_heap.begin(), second_heap.end());
 	
