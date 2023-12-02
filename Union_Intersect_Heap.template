@@ -63,7 +63,6 @@ void Union_Intersect_Heap<T>::set_Union(const bool& is_max) {
 }
 
 //precondition: first and second heap must be filled, bool used to make max or min heap
-//data type must be integer
 //postcondition: puts repeating elements in max or min heap
 template <typename T>
 void Union_Intersect_Heap<T>::set_Intersect(const bool& is_max) {
