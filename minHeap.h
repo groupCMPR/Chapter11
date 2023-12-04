@@ -26,11 +26,8 @@ public:
 	bool push(const T&);
 
 	//MUTATORS
-	void reheapification();
 	void pop();
-
-	//FRIEND
-	friend ostream& operator <<<>(ostream&, const minHeap<T>&);
+	void display() const;
 };
 
 #include "minHeap.template"
