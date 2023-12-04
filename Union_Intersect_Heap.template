@@ -5,27 +5,27 @@
 //precondition: string prompt ("Maximum" or "Minimum")
 //postcondition: constructor
 template <typename T>
-Union_Intersect_Heap<T>::Union_Intersect_Heap(const string& prompt) {
-	this->prompt = prompt;
+Union_or_Intersect_Heap<T>::Union_or_Intersect_Heap(const string& prompt) {
+	Max_or_Min = prompt;
 }
 
 //precondition: must be integer data type T
 //postcondition:sets up first and second heap
 template <typename T>
-void Union_Intersect_Heap<T>::set_Heap() {
+void Union_or_Intersect_Heap<T>::set_Heap() {
 	//clears J I C
 	first_heap.clear();
 	second_heap.clear();
 
 	//loops fill in vectors
-	int vector_Size = inputInteger("\n\tEnter the amount of integers to input into the first " + prompt + " heap: ", 1, 100);
+	int vector_Size = inputInteger("\n\tEnter the amount of integers to input into the first " + Max_or_Min + " heap: ", 1, 100);
 	first_heap.reserve(vector_Size);
 	do {
 		first_heap.push_back(inputInteger("\n\tEnter an element: "));
 		--vector_Size;
 	} while (vector_Size > 0);
 
-	vector_Size = inputInteger("\n\tEnter the amount of integers to input into the second " + prompt + " heap: ", 1, 100);
+	vector_Size = inputInteger("\n\tEnter the amount of integers to input into the second " + Max_or_Min + " heap: ", 1, 100);
 	second_heap.reserve(vector_Size);
 	do {
 		second_heap.push_back(inputInteger("\n\tEnter an element: "));
@@ -42,8 +42,8 @@ void Union_Intersect_Heap<T>::set_Heap() {
 //precondition: first and second heap must be filled, bool used to make max or min heap
 //postcondition: merges two heaps into a max or min heap
 template <typename T>
-void Union_Intersect_Heap<T>::set_Union(const bool& is_max) {
-	prompt_action = "Merged " + prompt;
+void Union_or_Intersect_Heap<T>::set_Union(const bool& is_max) {
+	Union_or_Intersect = "Merged " + Max_or_Min;
 
 	//all elements are copied
 	final_heap.reserve(first_heap.size() + second_heap.size());
@@ -66,10 +66,10 @@ void Union_Intersect_Heap<T>::set_Union(const bool& is_max) {
 //precondition: first and second heap must be filled, bool used to make max or min heap
 //postcondition: puts repeating elements in max or min heap
 template <typename T>
-void Union_Intersect_Heap<T>::set_Intersect(const bool& is_max) {
+void Union_or_Intersect_Heap<T>::set_Intersect(const bool& is_max) {
 	final_heap.clear();
 
-	prompt_action = "Intersect";
+	Union_or_Intersect = "Intersect";
 
 	//to get repeating numbers from the second heap
 	for (auto iter = second_heap.begin(); iter < second_heap.end(); ++iter) {
@@ -93,82 +93,82 @@ void Union_Intersect_Heap<T>::set_Intersect(const bool& is_max) {
 //precondition: N/A
 //postcondition: returns true if empty, false if filled
 template <typename T>
-bool Union_Intersect_Heap<T>::is_Empty() const{
+bool Union_or_Intersect_Heap<T>::is_Empty() const{
 	return (first_heap.empty());
 }
 
 //precondition:N/A
 //postcondition:returns prompt (Merge, Intersect)
 template <typename T>
-string Union_Intersect_Heap<T>::get_Prompt_Action() const {
-	return prompt_action;
+string Union_or_Intersect_Heap<T>::get_string_Union_or_Intersect() const {
+	return Union_or_Intersect;
 }
 
 //precondition:N/A
 //postcondition:returns prompt (Max, Min)
 template <typename T>
-string Union_Intersect_Heap<T>::get_Prompt() const{
-	return prompt;
+string Union_or_Intersect_Heap<T>:: get_string_Max_or_Min() const{
+	return Max_or_Min;
 }
 
 //precondition:N/A
 //postcondition:returns iterator at .begin() of heap
 template <typename T>
-typename vector<T>::const_iterator Union_Intersect_Heap<T>::get_First_Begin() const {
+typename vector<T>::const_iterator Union_or_Intersect_Heap<T>::get_First_Begin() const {
 	return first_heap.begin();
 }
 
 //precondition:N/A
 //postcondition:returns iterator at .end() of heap
 template <typename T>
-typename vector<T>::const_iterator Union_Intersect_Heap<T>::get_First_End() const {
+typename vector<T>::const_iterator Union_or_Intersect_Heap<T>::get_First_End() const {
 	return first_heap.end();
 }
 
 //precondition:N/A
 //postcondition:returns iterator at .begin() of heap
 template <typename T>
-typename vector<T>::const_iterator Union_Intersect_Heap<T>::get_Second_Begin() const {
+typename vector<T>::const_iterator Union_or_Intersect_Heap<T>::get_Second_Begin() const {
 	return second_heap.begin();
 }
 
 //precondition:N/A
 //postcondition:returns iterator at .end() of heap
 template <typename T>
-typename vector<T>::const_iterator Union_Intersect_Heap<T>::get_Second_End() const {
+typename vector<T>::const_iterator Union_or_Intersect_Heap<T>::get_Second_End() const {
 	return second_heap.end();
 }
 
 //precondition:N/A
 //postcondition:returns iterator at .begin() of heap
 template <typename T>
-typename vector<T>::const_iterator Union_Intersect_Heap<T>::get_Final_Begin() const{
+typename vector<T>::const_iterator Union_or_Intersect_Heap<T>::get_Final_Begin() const{
 	return final_heap.begin();
 }
 
 //precondition:N/A
 //postcondition:returns iterator at .end() of heap
 template <typename T>
-typename vector<T>::const_iterator Union_Intersect_Heap<T>::get_Final_End() const{
+typename vector<T>::const_iterator Union_or_Intersect_Heap<T>::get_Final_End() const{
 	return final_heap.end();
 }
 
 //precondition:filled in heaps
 //postcondition:return display
 template <typename T>
-ostream& operator<< (ostream& out, const Union_Intersect_Heap<T>& obj){
-	out << "\n\t" << obj.get_Prompt() << " heap #1: ";
+ostream& operator<< (ostream& out, const Union_or_Intersect_Heap<T>& obj){
+	out << "\n\t" << obj.get_string_Max_or_Min() << " heap #1: ";
 
 	for (auto iter = obj.get_First_Begin(); iter != obj.get_First_End(); ++iter)
 		out << *iter << " ";
 
-	out << "\n\t" << obj.get_Prompt() << " heap #2: ";
+	out << "\n\t" << obj.get_string_Max_or_Min() << " heap #2: ";
 
 	for (auto iter = obj.get_Second_Begin(); iter != obj.get_Second_End(); ++iter)
 		out << *iter << " ";
 
 
-	out << "\n\t" << obj.get_Prompt_Action() << " heap: ";
+	out << "\n\t" << obj.get_string_Union_or_Intersect() << " heap: ";
 	for (auto iter = obj.get_Final_Begin(); iter != obj.get_Final_End(); ++iter)
 		out << *iter << " ";
 
