@@ -151,8 +151,6 @@ void minHeapVector()
                 cout << "\t\tERROR: the element, " << value << ", already existed in the heap. Please re-specify.\n";
                 value = inputInteger("\n\t\tEnter an integer element to push onto the heap: ");
             }
-
-            minimum.reheapification();
         }break;
         case 4:
         {
@@ -294,7 +292,7 @@ void option2()
         case 'B': min_heap.set_Heap(); break;
         case 'C': {
 
-            if (max_heap.get_Empty()) {
+            if (max_heap.is_Empty()) {
                 cout << "\n\tMax Heap is empty.";
                 break;
             }
@@ -307,7 +305,7 @@ void option2()
         }
         case 'D': {
 
-            if (max_heap.get_Empty()) {
+            if (max_heap.is_Empty()) {
                 cout << "\n\tMax Heap is empty.";
                 break;
             }
@@ -318,7 +316,7 @@ void option2()
             break;
         }
         case 'E': {
-            if (min_heap.get_Empty()) {
+            if (min_heap.is_Empty()) {
                 cout << "\n\tMin Heap is empty.";
                 break;
             }
@@ -330,7 +328,7 @@ void option2()
             break;
         }
         case 'F': {
-            if (min_heap.get_Empty()) {
+            if (min_heap.is_Empty()) {
                 cout << "\n\tMin Heap is empty.";
                 break;
             }
