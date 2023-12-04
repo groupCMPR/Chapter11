@@ -49,6 +49,7 @@ bool minHeap<T>::push(const T& data)
 		}
 	}
 	myVector.push_back(data);
+	push_heap(myVector.begin(), myVector.end(), greater<T>());
 	return true;
 }
 
@@ -58,19 +59,11 @@ bool minHeap<T>::push(const T& data)
 // 
 //------------------------------------------------------
 //Precondition : Dynamic array is not empty
-//Postcondition: Arrange vector in reheapification up
-template <class T>
-void minHeap<T>::reheapification()
-{
-	make_heap(myVector.begin(), myVector.end(), greater<T>());
-}
-//Precondition : Dynamic array is not empty
 //Postcondition: Removing the first element in the vector
 template <class T>
 void minHeap<T>::pop()
 {
-	pop_heap(myVector.begin(), myVector.end(), greater<T>());
-	myVector.pop_back();
+	myVector.erase(myVector.begin());
 }
 //Precondition : Dynamic array is not empty
 //Postcondition: Display all the data inside the vector
@@ -78,8 +71,6 @@ template<class T>
 ostream& operator <<(ostream& out, const minHeap<T>& obj)
 {
     for (const auto& value : obj.myVector)
-	{
-		out << value << " ";
-	}
-    return out;
+            out << value << " ";
+        return out;
 }
