@@ -267,8 +267,8 @@ void maxHeapVector()
 //Postcondition: Implements the union and intersection of two max/min heaps
 void option2()
 {
-    Union_Intersect_Heap<int> max_heap("Max");
-    Union_Intersect_Heap<int> min_heap("Min");
+    Union_or_Intersect_Heap<int> max_heap("Max");
+    Union_or_Intersect_Heap<int> min_heap("Min");
 
     do
     {
