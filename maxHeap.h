@@ -12,7 +12,7 @@ template<class T>
 class maxHeap
 {
 private:
-    vector<T> myVec;
+    vector<T> maximum;
 
 public:
     maxHeap();
