@@ -18,7 +18,7 @@ minHeap<T>::minHeap()
 template <class T>
 int minHeap<T>::getSize() const
 {
-	return myVector.size();
+	return minimum.size();
 }
 //Precondition : N/A
 //Postcondition: Return TRUE if the dynamic array is empty
@@ -26,14 +26,14 @@ int minHeap<T>::getSize() const
 template <class T>
 bool minHeap<T>::isEmpty() const
 {
-	return myVector.empty();
+	return minimum.empty();
 }
 //Precondition : Dynamic array is not empty
 //Postcondition: Return the first element of the vector
 template <class T>
 T minHeap<T>::getFront() const
 {
-	return myVector.front();
+	return minimum.front();
 }
 //Precondition : Passing in a valid template data
 //Postcondition: Return TRUE if no duplicate data and change the vector
@@ -41,15 +41,15 @@ T minHeap<T>::getFront() const
 template <class T>
 bool minHeap<T>::push(const T& data)
 {
-	for (int i = 0; i < myVector.size(); i++)
+	for (int i = 0; i < minimum.size(); i++)
 	{
-		if (myVector[i] == data)
+		if (minimum[i] == data)
 		{
 			return false;
 		}
 	}
-	myVector.push_back(data);
-	push_heap(myVector.begin(), myVector.end(), greater<T>());
+	minimum.push_back(data);
+	push_heap(minimum.begin(), minimum.end(), greater<T>());
 	return true;
 }
 
@@ -63,15 +63,15 @@ bool minHeap<T>::push(const T& data)
 template <class T>
 void minHeap<T>::pop()
 {
-	pop_heap(myVector.begin(), myVector.end(), greater<T>());
-	myVector.pop_back();
+	pop_heap(minimum.begin(), minimum.end(), greater<T>());
+	minimum.pop_back();
 }
 //Precondition : Dynamic array is not empty
 //Postcondition: Display all the data inside the vector
 template<class T>
 ostream& operator <<(ostream& out, const minHeap<T>& obj)
 {
-    for (const auto& value : obj.myVector)
+    for (const auto& value : obj.minimum)
 	{
 		out << value << " ";
 	}
