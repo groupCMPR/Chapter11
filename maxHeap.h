@@ -29,7 +29,7 @@ public:
     //pops the front
     void pop();
     //output
-    friend ostream& operator <<<>(ostream& out, const maxHeap<T>& obj);
+    friend ostream& operator <<<>(ostream&, const maxHeap<T>&);
 };
 
 #include "maxHeap.template"
