@@ -288,8 +288,8 @@ void option2()
         switch (inputChar("\n\t\tOption: ", static_cast<string>("ABCDEF0")))
         {
         case '0': return;
-        case 'A': max_heap.set_Heap(); break;
-        case 'B': min_heap.set_Heap(); break;
+        case 'A': max_heap.set_Heap(true); break;
+        case 'B': min_heap.set_Heap(false); break;
         case 'C': {
 
             if (max_heap.is_Empty()) {
