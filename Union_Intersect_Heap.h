@@ -4,9 +4,9 @@
 
 #pragma
 #include <vector>     //For vector
-#include <algorithm>  //Fpr heap
+#include <algorithm>  //For using heap in older compilers
 #include <string>     //For string
-#include <functional> //Required for std::greater<int>
+#include <functional> //Required for std::greater<T>
 #include "input.h"    //For input validation
 using namespace std;
 
