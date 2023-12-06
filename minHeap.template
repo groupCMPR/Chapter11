@@ -72,7 +72,9 @@ template<class T>
 ostream& operator <<(ostream& out, const minHeap<T>& obj)
 {
     for (const auto& value : obj.myVector)
-            out << value << " ";
+	{
+		out << value << " ";
+	}
 	out << '\n';
     return out;
 }
