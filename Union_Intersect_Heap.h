@@ -23,9 +23,9 @@ public:
 	Union_or_Intersect_Heap(const string& prompt);
 
 	//Mutators
-	void set_Heap();
-	void set_Union(const bool& is_max);
-	void set_Intersect(const bool& is_max);
+	void set_Heap(const bool&);
+	void set_Union(const bool&);
+	void set_Intersect(const bool&);
 
 	//Accessors, for data hiding into friend function
 	bool is_Empty() const;
