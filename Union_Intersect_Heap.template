@@ -65,8 +65,6 @@ void Union_or_Intersect_Heap<T>::set_Union(const bool& is_max) {
 	//if true max heap, if false min heap (reheapify)
 	if(is_max)
 		make_heap(final_heap.begin(), final_heap.end());
-	else
-		make_heap(final_heap.begin(), final_heap.end(), greater<T>());
 }
 
 //precondition: first and second heap must be filled, bool used to make max or min heap
@@ -92,15 +90,13 @@ void Union_or_Intersect_Heap<T>::set_Intersect(const bool& is_max) {
 	//true max heap, false min heap
 	if (is_max)
 		make_heap(final_heap.begin(), final_heap.end());
-	else
-		make_heap(final_heap.begin(), final_heap.end(), greater<T>());
 }
 
 //precondition: N/A
 //postcondition: returns true if empty, false if filled
 template <typename T>
 bool Union_or_Intersect_Heap<T>::is_Empty() const{
-	return (first_heap.empty());
+	return (first_heap.empty() && second_heap.empty());
 }
 
 //precondition:N/A
