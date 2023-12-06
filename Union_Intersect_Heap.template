@@ -12,7 +12,7 @@ Union_or_Intersect_Heap<T>::Union_or_Intersect_Heap(const string& prompt) {
 //precondition: must be integer data type T
 //postcondition:sets up first and second heap
 template <typename T>
-void Union_or_Intersect_Heap<T>::set_Heap() {
+void Union_or_Intersect_Heap<T>::set_Heap(const bool& is_max) {
 	//clears J I C
 	first_heap.clear();
 	second_heap.clear();
@@ -33,9 +33,15 @@ void Union_or_Intersect_Heap<T>::set_Heap() {
 	} while (vector_Size > 0);
 
 
-	//makes a heap
-	make_heap(first_heap.begin(), first_heap.end());
-	make_heap(second_heap.begin(), second_heap.end());
+	//makes a heap: if true max heap, if false min heap 
+	if(is_max){
+		make_heap(first_heap.begin(), first_heap.end());
+		make_heap(second_heap.begin(), second_heap.end());
+	}
+	else{
+		make_heap(first_heap.begin(), first_heap.end(), greater<T>());
+		make_heap(second_heap.begin(), second_heap.end(), greater<T>());
+	}
 
 }
 
