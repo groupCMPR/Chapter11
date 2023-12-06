@@ -63,7 +63,8 @@ bool minHeap<T>::push(const T& data)
 template <class T>
 void minHeap<T>::pop()
 {
-	myVector.erase(myVector.begin());
+	pop_heap(myVector.begin(), myVector.end(), greater<T>());
+	myVector.pop_back();
 }
 //Precondition : Dynamic array is not empty
 //Postcondition: Display all the data inside the vector
@@ -72,5 +73,6 @@ ostream& operator <<(ostream& out, const minHeap<T>& obj)
 {
     for (const auto& value : obj.myVector)
             out << value << " ";
-        return out;
+	out << '\n';
+    return out;
 }
