@@ -10,15 +10,15 @@ maxHeap<T>::maxHeap() {};
 //PostConditon: Returns the size of the heap
 template<typename T>
 int maxHeap<T>::size() const{
-    return myVec.size();
+    return maximum.size();
 }
 
 //PreCondition: Accepts a valid data type
 //PostCondition: returns true or false if the value is found in the heap
 template<typename T>
 bool maxHeap<T>::find(T value) const{
-    for(int i = 0; i < myVec.size(); i++){
-        if(myVec[i] == value)
+    for(int i = 0; i < maximum.size(); i++){
+        if(maximum[i] == value)
             return true;
     }
     return false;
@@ -28,30 +28,30 @@ bool maxHeap<T>::find(T value) const{
 //PostCondition: checks to see if heap is empty
 template<typename T>
 bool maxHeap<T>::empty() const{
-    return myVec.size() == 0;
+    return maximum.size() == 0;
 }
 
 //PreCondition: Accepts a valid data type 
 //PostCondition: pushes a value onto the heap
 template<typename T>
 void maxHeap<T>::push(T value){
-    myVec.push_back(value);
-    push_heap(myVec.begin(), myVec.end());
+    maximum.push_back(value);
+    push_heap(maximum.begin(), maximum.end());
 }
 
 //PreCondition: None
 //PostCondition: Returns the front of the heap
 template<typename T>
 T maxHeap<T>::front() const{
-    return myVec[0];
+    return maximum[0];
 }
 
 //PreCondition: None
 //PostCondition: Pops the first element in the heap
 template<typename T>
 void maxHeap<T>::pop(){
-    pop_heap(myVec.begin(), myVec.end());
-    myVec.pop_back();
+    pop_heap(maximum.begin(), maximum.end());
+    maximum.pop_back();
 }
 
 //PreCondition: accepts ostream and object 
@@ -59,7 +59,7 @@ void maxHeap<T>::pop(){
 template<class T>
 ostream& operator <<(ostream& out, const maxHeap<T>& obj)
 {
-    for (const auto& value : obj.myVec)
+    for (const auto& value : obj.maximum)
             out << value << " ";
         return out;
 }
