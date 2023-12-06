@@ -13,7 +13,7 @@ template <class T>
 class minHeap
 {
 private:
-	vector<T> myVector;
+	vector<T> minimum;
 
 public:
 	//CONSTRUCTOR
